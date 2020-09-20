@@ -16,5 +16,8 @@ class User(db.Model, BaseModel):
         self.email = email
         self._password = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
         
+    def __str__(self):
+        return " Name=%s, Email=%s" % (self.name, self.email)
+        
     def check_password(self, password: str):
         return bcrypt.checkpw(password=password.encode(), hashed_password=self._password.encode())

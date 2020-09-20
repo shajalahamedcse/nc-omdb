@@ -8,3 +8,5 @@ bcrypt
 typing
 flask_migrate
 flask_script
+Flask-Seeder
+flask_restful
