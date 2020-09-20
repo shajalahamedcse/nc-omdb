@@ -29,7 +29,7 @@ class FlaskJWTExtendedConfig:
 class Database:
     _database: str = os.getenv("DB", "postgresql")
     _db_driver: str = os.getenv("DB_DRIVER", "psycopg2")
-    _db_host: str = os.getenv("DB_HOST", "127.0.0.1")
+    _db_host: str = os.getenv("DB_HOST", "db")
     _db_port: int = int(os.getenv("DB_PORT", "5432"))
     _db_username: str = os.getenv("DB_USER", "postgres")
     _db_password: str = os.getenv("DB_PASSWORD", "postgres")

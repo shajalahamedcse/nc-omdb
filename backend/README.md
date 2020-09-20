@@ -1,13 +1,44 @@
 ### API ENDPOINTS
 
     /api/v1/login
-    /api/v1/addtofav
-    /api/v1/search
-    /api/v1/movie_details
+    /api/v1/movie/search
+    /ap1/v1/authenticate
+
+### RUN WIHOUT dockerc-compse:
+
+
+    RUN postgres using docker
+
+        $ docker run -p 5432:5432 --name postgres1 -e POSTGRES_PASSWORD=postgres  postgres
+
+
+    Enter into potgres container
+
+        $ docker exec -it {container id} /bin/sh
+        $ psql -U postgres -W
+
+    Enter Password
+        $ postgres
+    
+    Create Database
+        $ create database omdb;
+
 
 
 ### DB Migrations
 
-    $ python manage.py db init
-    $ python manage.py db migrate
-    $ python manage.py db upgrade
+        $ python manage.py db init
+        $ python manage.py db migrate
+        $ python manage.py db upgrade
+
+
+### Seeder
+
+        $ export FLASK_APP app.py
+        $ flask seed run
+
+
+### RUN Code
+
+        $ python app.py
+

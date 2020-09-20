@@ -3,10 +3,10 @@ version: '3.7'
 services:
   web:
     build: ./backend
-   # command: python manage.py run -h 0.0.0.0
-
     ports:
       - 5000:5000
+    environment:
+      - DB_HOST=db
 
     depends_on:
       - db
@@ -18,5 +18,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=omdb
+    ports:
+      - 5432:5432
 volumes:
   postgres_data:
