@@ -5,3 +5,6 @@ requests
 Flask-SQLAlchemy
 Flask-CORS
 bcrypt
+typing
+flask_migrate
+flask_script
