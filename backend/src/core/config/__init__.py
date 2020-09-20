@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from typing import Dict, Any
 from src.utils import Generator
 
@@ -8,6 +9,16 @@ class FlaskConfig:
     SECRET_KEY: str = os.getenv("SECRET_KEY", Generator.random_string_generator(length=64, punctuation=False))
     
 
+class FlaskJWTExtendedConfig:
+    JWT_TOKEN_LOCATION: str = ("headers", "query_string")
+    JWT_HEADER_NAME: str = "Authorization"
+    JWT_HEADER_TYPE: str = "Bearer"
+    JWT_QUERY_STRING_NAME: str = "token"
+    JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=1)
+    JWT_REFRESH_TOKEN_EXPIRES = timedelta(weeks=4)
+    JWT_ALGORITHM: str = "HS512"
+    JWT_SECRET_KEY: str = os.getenv("JWT_SECRET_KEY", "s3cr3t_key_change_it")
+    JWT_BLACKLIST_ENABLED: bool = False
 
 class Database:
     _database: str = os.getenv("DB", "postgresql")
@@ -48,3 +59,14 @@ class Configuration:
     SQLALCHEMY_POOL_SIZE: int = SQLAlchemyConfig.pool_size
     SQLALCHEMY_POOL_RECYCLE: int = SQLAlchemyConfig.pool_recycle
     SQLALCHEMY_ENGINE_OPTIONS: Dict[str, Any] = SQLAlchemyConfig.engine_options
+    
+    # jwt token config
+    JWT_TOKEN_LOCATION = FlaskJWTExtendedConfig.JWT_TOKEN_LOCATION
+    JWT_HEADER_NAME = FlaskJWTExtendedConfig.JWT_HEADER_NAME
+    JWT_HEADER_TYPE = FlaskJWTExtendedConfig.JWT_HEADER_TYPE
+    JWT_QUERY_STRING_NAME = FlaskJWTExtendedConfig.JWT_QUERY_STRING_NAME
+    JWT_ACCESS_TOKEN_EXPIRES = FlaskJWTExtendedConfig.JWT_ACCESS_TOKEN_EXPIRES
+    JWT_REFRESH_TOKEN_EXPIRES = FlaskJWTExtendedConfig.JWT_REFRESH_TOKEN_EXPIRES
+    JWT_ALGORITHM = FlaskJWTExtendedConfig.JWT_ALGORITHM
+    JWT_SECRET_KEY = FlaskJWTExtendedConfig.JWT_SECRET_KEY
+    JWT_BLACKLIST_ENABLED = FlaskJWTExtendedConfig.JWT_BLACKLIST_ENABLED

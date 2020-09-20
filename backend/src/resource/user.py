@@ -28,4 +28,11 @@ class UserLogin(Resource):
             "access_token": access_token
         }, code=200)
         
+class UserAuthenticate(Resource):
+    
+    @jwt_required
+    def get(self):
+        return ResponseGenerator.generate_response(current_user.json, code=200)
+        
 api.add_resource(UserLogin, "/login")
+api.add_resource(UserAuthenticate, "/authenticate")
