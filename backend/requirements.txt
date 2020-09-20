@@ -1,0 +1,7 @@
+flask
+psycopg2-binary
+Flask-JWT-Extended
+requests
+Flask-SQLAlchemy
+Flask-CORS
+bcrypt
