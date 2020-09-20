@@ -9,6 +9,12 @@ class FlaskConfig:
     SECRET_KEY: str = os.getenv("SECRET_KEY", Generator.random_string_generator(length=64, punctuation=False))
     
 
+
+
+class OMDBClientConfig:
+    api_key: str = os.getenv("OMDB_API_KEY", "541f509f")
+    
+    
 class FlaskJWTExtendedConfig:
     JWT_TOKEN_LOCATION: str = ("headers", "query_string")
     JWT_HEADER_NAME: str = "Authorization"
@@ -70,3 +76,6 @@ class Configuration:
     JWT_ALGORITHM = FlaskJWTExtendedConfig.JWT_ALGORITHM
     JWT_SECRET_KEY = FlaskJWTExtendedConfig.JWT_SECRET_KEY
     JWT_BLACKLIST_ENABLED = FlaskJWTExtendedConfig.JWT_BLACKLIST_ENABLED
+    
+    # omdb config
+    OMDB_API_KEY: str = OMDBClientConfig.api_key
