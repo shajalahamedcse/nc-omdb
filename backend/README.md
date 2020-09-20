@@ -6,6 +6,18 @@
 
 ### RUN WIHOUT dockerc-compse:
 
+    Download The project
+
+        $ git clone https://github.com/shajalahamedcse/nc-omdb.git
+        $ cd nc-omdb
+
+    Install env ,then:
+
+        $ python3 -m venv env
+        $ source env/bin/activate
+        $ cd backend
+        $ pip install -r requirements.txt
+
 
     RUN postgres using docker
 
@@ -27,6 +39,7 @@
 
 ### DB Migrations
 
+        
         $ python manage.py db init
         $ python manage.py db migrate
         $ python manage.py db upgrade
